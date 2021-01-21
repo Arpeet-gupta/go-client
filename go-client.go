@@ -24,4 +24,22 @@ func main() {
 
 	//print data as string
 	fmt.Printf("%s\n", data)
+
+	//make a sample HTTP GET Request to go-webserver
+	res2, err2 := http.Get("http://localhost:9090/search")
+
+	//check for nil response
+	if err2 != nil {
+		log.Fatal(err2)
+	}
+
+	//read all response body
+	data2, _ := ioutil.ReadAll(res2.Body)
+
+	//close the response body
+	res.Body.Close()
+
+	//print data as string
+	fmt.Printf("%s\n", data2)
+
 }
